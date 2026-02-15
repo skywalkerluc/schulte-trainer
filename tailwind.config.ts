@@ -5,7 +5,11 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(circle at top, var(--tw-gradient-stops))',
+      },
+    },
   },
   plugins: [],
 };

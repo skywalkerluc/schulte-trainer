@@ -13,7 +13,7 @@ function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className="bg-slate-950 text-slate-100 antialiased">
+      <body className="bg-gradient-radial from-slate-950 to-slate-900 text-slate-100 antialiased">
         {children}
       </body>
     </html>

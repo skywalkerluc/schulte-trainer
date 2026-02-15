@@ -96,9 +96,9 @@ export function Grid() {
   const displayElapsed = finishedTime !== null ? finishedTime : elapsed;
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex flex-col items-center gap-6">
       <div className="flex items-center gap-4">
-        <span className="text-lg font-mono tabular-nums text-slate-200">
+        <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-3xl font-mono font-bold tabular-nums text-transparent">
           {formatTime(displayElapsed)}
         </span>
         {isFinished && (
@@ -113,7 +113,7 @@ export function Grid() {
         )}
       </div>
       <div
-        className="grid gap-2"
+        className="grid gap-3"
         style={{
           gridTemplateColumns: `repeat(${grid.size}, minmax(0, 1fr))`,
         }}
@@ -124,18 +124,21 @@ export function Grid() {
           const clicked = num < nextExpected;
           const showCorrect = clicked || isCorrectClick;
           const showWrong = feedback === "wrong" && wrongCellNum === num;
+          const isActive = num === nextExpected;
           return (
             <button
               key={num}
               type="button"
               onClick={() => handleCellClick(num)}
               disabled={isFinished}
-              className={`flex h-14 w-14 items-center justify-center rounded text-2xl font-bold transition-colors duration-200 sm:h-16 sm:w-16 ${
+              className={`flex h-14 w-14 items-center justify-center rounded-lg border text-2xl font-bold shadow-xl backdrop-blur-md transition-all duration-200 sm:h-16 sm:w-16 ${
                 showCorrect
-                  ? "bg-green-500/20 text-slate-100"
+                  ? "border-green-400/30 bg-green-500/20 text-slate-100 shadow-green-500/20"
                   : showWrong
-                    ? "bg-red-500/20 text-slate-100"
-                    : "bg-slate-800 text-slate-100 hover:bg-slate-700"
+                    ? "border-red-400/30 bg-red-500/20 text-slate-100 shadow-red-500/20"
+                    : isActive
+                      ? "border-white/10 bg-white/5 text-slate-100 ring-2 ring-blue-400 hover:scale-105 hover:bg-white/10"
+                      : "border-white/10 bg-white/5 text-slate-100 hover:scale-105 hover:bg-white/10"
               }`}
             >
               {num}

@@ -15,7 +15,7 @@ export function Sidebar() {
   );
 
   return (
-    <div className="flex h-full flex-col overflow-y-auto bg-slate-900 md:w-80 md:border-l md:border-slate-800">
+    <div className="flex h-full flex-col overflow-y-auto bg-slate-900/50 backdrop-blur-sm md:w-80 md:border-l md:border-white/10">
       <div className="p-4">
         <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-400">
           Grids
@@ -34,16 +34,16 @@ export function Sidebar() {
               return (
                 <li
                   key={grid.id}
-                  className={`rounded bg-slate-800 p-4 ${isActive ? "ring-2 ring-blue-500" : ""}`}
+                  className={`rounded-lg border border-white/10 bg-white/5 p-4 shadow-xl backdrop-blur-lg ${isActive ? "ring-2 ring-blue-400 shadow-blue-500/20" : ""}`}
                 >
                   <div className="mb-2 flex items-center justify-between gap-2">
-                    <span className="rounded bg-slate-700 px-2 py-0.5 text-xs font-medium text-slate-200">
+                    <span className="rounded border border-white/20 bg-white/10 px-2 py-0.5 text-xs font-medium text-slate-200 backdrop-blur-sm">
                       {grid.size}×{grid.size}
                     </span>
                     <button
                       type="button"
                       onClick={() => deleteGrid(grid.id)}
-                      className="text-slate-400 transition-colors hover:text-red-500"
+                      className="text-slate-400 transition-colors hover:text-red-400"
                       aria-label="Excluir grid"
                     >
                       ×
@@ -58,7 +58,7 @@ export function Sidebar() {
                   <button
                     type="button"
                     onClick={() => setActiveGrid(grid.id)}
-                    className="w-full rounded bg-blue-600 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+                    className="w-full rounded-lg border border-blue-400/30 bg-blue-600/80 px-3 py-2 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-blue-500/80 hover:shadow-lg hover:shadow-blue-500/30"
                   >
                     Abrir
                   </button>
