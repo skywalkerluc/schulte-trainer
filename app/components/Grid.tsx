@@ -121,10 +121,8 @@ export function Grid() {
         {grid.numbers.map((num) => {
           const isCorrectClick =
             feedback === "correct" && num === nextExpected - 1;
-          const clicked = num < nextExpected;
-          const showCorrect = clicked || isCorrectClick;
+          const showCorrect = isCorrectClick;
           const showWrong = feedback === "wrong" && wrongCellNum === num;
-          const isActive = num === nextExpected;
           return (
             <button
               key={num}
@@ -136,9 +134,7 @@ export function Grid() {
                   ? "border-green-400/30 bg-green-500/20 text-slate-100 shadow-green-500/20"
                   : showWrong
                     ? "border-red-400/30 bg-red-500/20 text-slate-100 shadow-red-500/20"
-                    : isActive
-                      ? "border-white/10 bg-white/5 text-slate-100 ring-2 ring-blue-400 hover:scale-105 hover:bg-white/10"
-                      : "border-white/10 bg-white/5 text-slate-100 hover:scale-105 hover:bg-white/10"
+                    : "border-white/10 bg-white/5 text-slate-100 hover:scale-105 hover:bg-white/10"
               }`}
             >
               {num}

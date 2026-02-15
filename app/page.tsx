@@ -1,11 +1,19 @@
 "use client";
 
+import { useEffect } from "react";
 import { Grid } from "@/app/components/Grid";
 import { Sidebar } from "@/app/components/Sidebar";
 import { useSessionStore } from "@/app/store/useSessionStore";
 
 function Page() {
   const createGrid = useSessionStore((s) => s.createGrid);
+  const grids = useSessionStore((s) => s.grids);
+
+  useEffect(() => {
+    if (Object.keys(grids).length === 0) {
+      createGrid(5);
+    }
+  }, []);
 
   return (
     <div className="flex h-screen flex-col">
